@@ -1,0 +1,4 @@
+mediquery.db
+__pycache__/
+*.pyc
+.env

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediQuery AI — Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="nav-brand">Medi<span>Query</span></a>
+        <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/history" class="nav-link">History</a>
+        </div>
+    </nav>
+
+    <div class="result-wrap">
+
+        <div class="result-header">
+            {% if has_abnormal %}
+                <div class="status-badge status-warn">Values outside normal range detected</div>
+            {% else %}
+                <div class="status-badge status-ok">All checked values within normal range</div>
+            {% endif %}
+            <h1 class="result-title">Analysis complete</h1>
+            <p class="result-sub">Based on the report you uploaded</p>
+        </div>
+
+        {% if has_abnormal %}
+        <div class="flags-card">
+            <div class="flags-label">Flagged values</div>
+            <ul class="flags-list">
+                {% for flag in flags %}
+                <li>{{ flag }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="result-block">
+            <div class="block-label">Your question</div>
+            <p class="block-content">{{ question }}</p>
+        </div>
+
+        <div class="result-block">
+            <div class="block-label">AI analysis</div>
+            <div class="block-content answer">{{ answer | safe }}</div>
+        </div>
+
+        <div class="disclaimer-card">
+            This analysis is for informational purposes only. Please consult a qualified doctor before making any medical decisions.
+        </div>
+
+        <a href="/" class="back-btn">← Analyse another report</a>
+
+    </div>
+
+    <footer class="footer">
+        MediQuery AI — Built with Python, Flask & AI
+    </footer>
+
+</body>
+</html>

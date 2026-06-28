@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediQuery AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="nav-brand">Medi<span>Query</span></a>
+        <div class="nav-links">
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/history" class="nav-link">History</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">AI-powered report analysis</div>
+        <h1>Your medical report,<br><span>explained clearly</span></h1>
+        <p class="hero-sub">Upload any blood test or lab result. Ask a question in plain English. Get a clear, simple explanation in seconds.</p>
+    </section>
+
+    <div class="features">
+        <div class="feature"><span class="feature-dot"></span>Upload any PDF report</div>
+        <div class="feature"><span class="feature-dot"></span>Instant AI analysis</div>
+        <div class="feature"><span class="feature-dot"></span>No medical jargon</div>
+        <div class="feature"><span class="feature-dot"></span>Flags abnormal values</div>
+    </div>
+
+    <div class="form-wrap">
+        <div class="form-card">
+            <h2>Analyse a report</h2>
+            <p class="form-desc">Free to use. Results in under 10 seconds.</p>
+
+            <form action="/result" method="POST" enctype="multipart/form-data" id="main-form">
+
+                <div class="input-group">
+                    <label>Medical report (PDF)</label>
+                    <div class="file-upload">
+                        <input type="file" name="report" accept=".pdf" id="file-input" required>
+                        <div class="file-upload-inner">
+                            <div class="upload-icon-wrap">📄</div>
+                            <span class="upload-primary" id="upload-text">Click to upload PDF</span>
+                            <span class="upload-secondary">Blood tests, lab reports, scan results</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Your question</label>
+                    <input type="text" name="question" class="text-input"
+                        placeholder="e.g. Are my blood sugar levels normal?"
+                        required>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <span id="btn-text">Analyse report</span>
+                    <span id="btn-loading" style="display:none">Analysing — please wait...</span>
+                </button>
+
+            </form>
+
+            <p class="form-footer">For informational purposes only. Always consult a qualified doctor.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        MediQuery AI — Built with Python, Flask & AI
+    </footer>
+
+    <script>
+        document.getElementById('file-input').addEventListener('change', function() {
+            const name = this.files[0] ? this.files[0].name : 'Click to upload PDF';
+            document.getElementById('upload-text').textContent = this.files[0] ? '✓ ' + name : name;
+        });
+
+        document.getElementById('main-form').addEventListener('submit', function() {
+            document.getElementById('btn-text').style.display = 'none';
+            document.getElementById('btn-loading').style.display = 'inline';
+            document.getElementById('submit-btn').disabled = true;
+        });
+    </script>
+
+</body>
+</html>

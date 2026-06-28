@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediQuery AI — History</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="nav-brand">Medi<span>Query</span></a>
+        <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/history" class="nav-link active">History</a>
+        </div>
+    </nav>
+
+    <div class="history-wrap">
+        <div class="page-header">
+            <h1 class="page-title">Query history</h1>
+            <a href="/" class="new-btn">+ New query</a>
+        </div>
+
+        {% if queries %}
+            {% for query in queries %}
+            <div class="history-card">
+                <div class="history-top">
+                    <span class="history-num">#{{ query[0] }}</span>
+                    <span class="history-time">{{ query[3] }}</span>
+                </div>
+                <div class="history-question">{{ query[1] }}</div>
+                <div class="history-answer">{{ query[2] | safe }}</div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">
+                <p>No queries yet. Analyse a report to see your history here.</p>
+                <a href="/" class="back-btn">Analyse now</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <footer class="footer">
+        MediQuery AI — Built with Python, Flask & AI
+    </footer>
+
+</body>
+</html>
