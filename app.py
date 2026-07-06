@@ -23,8 +23,7 @@ def show_result():
     question = request.form["question"]
     report = request.files["report"]
 
-    # Extract text from PDF
-    # Extract text from PDF
+    
     # Extract text from PDF
     try:
         pdf_reader = PyPDF2.PdfReader(io.BytesIO(report.read()))
