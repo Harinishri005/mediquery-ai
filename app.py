@@ -57,6 +57,10 @@ def show_result():
     )
 
     data = response.json()
+    print("API RESPONSE:", data)
+    if "choices" not in data:
+        error_msg = data.get("error", {}).get("message", "API error occurred")
+        return render_template("error.html", message="AI service error: " + error_msg)
     answer = data["choices"][0]["message"]["content"]
 
     # Format answer
