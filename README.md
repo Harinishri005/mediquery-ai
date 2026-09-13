@@ -79,4 +79,87 @@ pip install -r requirements.txt
 
 **3. Configure environment**
 
-Create a `.env` file in the root directory:
+`GROQ_API_KEY=your_groq_api_key_here`
+
+Get your free Groq API key at console.groq.com
+
+**4. Run the application**
+```bash
+python app.py
+```
+
+**5. Open in browser**
+http://127.0.0.1:5000
+
+---
+
+## Project Structure
+mediquery/
+├── static/
+│   ├── images/
+│   │   ├── home.png
+│   │   ├── result.png
+│   │   └── history.png
+│   └── style.css
+├── templates/
+│   ├── index.html
+│   ├── result.html
+│   ├── history.html
+│   └── error.html
+├── app.py
+├── database.py
+├── requirements.txt
+├── .gitignore
+└── README.md
+
+
+---
+
+## How it works
+
+User uploads PDF
+↓
+PyPDF2 extracts text from report
+↓
+Text + question sent to Groq AI API
+↓
+AI generates plain English explanation
+↓
+Abnormal values detected and flagged
+↓
+Result displayed + saved to SQLite database
+
+
+---
+
+## What I learned
+
+- Full stack web development with Python and Flask
+- REST API integration with third party AI services
+- PDF text extraction and processing
+- SQL database design and CRUD operations
+- Secure API credential management using environment variables
+- Git version control and production deployment on Render
+- Real world debugging — function naming conflicts, GitHub secret scanning, API model deprecations
+
+---
+
+## Roadmap
+
+- User authentication with Flask-Login
+- Support for scanned PDFs using Tesseract OCR
+- Database migration from SQLite to PostgreSQL
+- Multi-language support for regional Indian languages
+- Email report summary feature
+
+---
+
+## Disclaimer
+
+MediQuery AI is for informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified doctor for medical decisions.
+
+---
+
+**Built by Harinishri S**  
+Medical Electronics Engineer → Software Developer  
+Chennai, India
