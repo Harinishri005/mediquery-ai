@@ -13,7 +13,6 @@ load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 init_db()
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -42,7 +41,7 @@ def show_result():
             "Content-Type": "application/json"
         },
         json={
-            "model": "llama-3.3-70b-versatile",
+            "model": "openai/gpt-oss-20b",
             "messages": [
                 {
                     "role": "system",
